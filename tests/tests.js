@@ -30,17 +30,33 @@ var compare = function(inputFile, expectedOutputFile, description, test) {
 exports.zopfli = {
 	'test-1': function(test) {
 		compare(
-			'tmp/jquery.min.js.gz',
-			'tests/expected/jquery.min.js.gz',
-			'jQuery',
+			'tmp/test-1.js.gz',
+			'tests/expected/test-1.js.gz',
+			'jQuery, default settings',
 			test
 		);
 	},
 	'test-2': function(test) {
 		compare(
-			'tmp/benchmark.js.gz',
-			'tests/expected/benchmark.js.gz',
-			'Benchmark.js',
+			'tmp/test-2.js.zlib',
+			'tests/expected/test-2.js.zlib',
+			'Benchmark.js, 50 iterations, zlib format',
+			test
+		);
+	},
+	'test-3': function(test) {
+		compare(
+			'tmp/test-3.js.deflate',
+			'tests/expected/test-3.js.deflate',
+			'Benchmark.js, 10 iterations, deflate format, perform block splitting last',
+			test
+		);
+	},
+	'test-4': function(test) {
+		compare(
+			'tmp/test-4.js.deflate',
+			'tests/expected/test-4.js.deflate',
+			'Benchmark.js, 10 iterations, deflate format, perform block splitting first',
 			test
 		);
 	}

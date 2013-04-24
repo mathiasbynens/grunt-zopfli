@@ -1,19 +1,28 @@
 var exec = require('child_process').exec;
 var shellEscape = require('shellwords').escape;
+var statSync = require('fs').statSync;
 
-var zopfli = function(filePath, callback) {
-	var command = 'zopfli -c ' + shellEscape(filePath);
-	exec(command,
-		function (error, stdout, stderr) {
+module.exports = function(grunt) {
+
+	var zopfli = function(filePath, options, callback) {
+		var command = [
+			'zopfli',
+			'-c',
+			'--i' + options.iterations,
+			options.format == 'gzip' ? '--gzip'
+				: options.format == 'deflate' ? '--deflate'
+					: '--zlib',
+			options.splitLast ? '--splitlast' : '',
+			shellEscape(filePath)
+		].join(' ');
+		exec(command, function(error, stdout, stderr) {
 			if (error) {
 				grunt.log.warn(error);
 				return;
 			}
 			callback.call(this, error || stderr, stdout);
-	});
-};
-
-module.exports = function(grunt) {
+		});
+	};
 
 	grunt.registerMultiTask('zopfli', 'Compress files using Zopfli.', function() {
 
@@ -21,28 +30,46 @@ module.exports = function(grunt) {
 
 		// Merge task-specific and/or target-specific options with these defaults:
 		var options = this.options({
-			// TODO?
+			'report': true, // show original and compressed size
+			'iterations': 15, // min value: 1; (undocumented) max value: 99999999999
+			'format': 'gzip', // 'gzip', 'zlib', 'deflate'
+			'splitLast': false // perform block splitting first instead of last
 		});
+
+		// Double-check options
+		if (options.iterations < 1 || options.iterations > 99999999999) {
+			// invalid `iterations` value given; fall back to the default
+			options.iterations = 15;
+		}
+		if (['gzip', 'zlib', 'deflate'].indexOf(options.format) == -1) {
+			// invalid `format` value given; fall back to the default
+			options.format = 'gzip';
+		}
 
 		// Iterate over all specified file groups
 		this.files.forEach(function(file) {
-
-			var filePath = file.src[0];
+			var srcPath = file.src[0];
+			var destPath = file.dest;
 
 			// Warn on invalid source files
-			if (!grunt.file.exists(filePath)) {
-				grunt.log.warn('Source file `' + filePath + '` not found.');
+			if (!grunt.file.exists(srcPath)) {
+				grunt.log.warn('Source file `' + srcPath + '` not found.');
 			}
 
 			// Compress the file
-			zopfli(filePath, function(error, stdout) {
+			zopfli(srcPath, options, function(error, stdout) {
 				if (error) {
 					done(false);
 				}
 				// Write the destination file
-				grunt.file.write(file.dest, stdout);
+				grunt.file.write(destPath, stdout);
 				// Print a success message
-				grunt.log.writeln('File `' + file.dest + '` created.');
+				grunt.log.writeln('File `' + destPath + '` created.');
+				// Print file size info
+				if (options.report) {
+					grunt.log.writeln('Original:   ' + String(statSync(srcPath).size).green + ' bytes.');
+					grunt.log.writeln('Compressed: ' + String(stdout.length).green + ' bytes.');
+				}
 				done();
 			});
 
