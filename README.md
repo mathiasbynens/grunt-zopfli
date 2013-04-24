@@ -42,12 +42,69 @@ grunt.initConfig({
 });
 ```
 
+### Options
+
+The `options` property can be used to override the following settings:
+
+#### `report`
+Type: `Boolean`
+Default: `true`
+
+Show the original and compressed file size (`true`). Or not (`false`). Whatever.
+
+#### `iterations`
+Type: `Number`
+Default: `15`
+
+The number of iterations Zopfli will perform. Higher values result in better compression at the cost of speed.
+
+#### `format`
+Type: `String`
+Possible values: `'gzip'`, `'zlib'`, `'deflate'`
+Default: `'gzip'`
+
+The desired output format.
+
+#### `splitLast`
+Type: `Boolean`
+Default: `false`
+
+By default (`false`), Zopfli will perform block splitting first instead of last. Set to `true` to make Zopfli perform block splitting last instead of first.
+
 ### Usage example
 
-Here’s a practical example of grunt-zopfli:
+Here’s a practical example of grunt-zopfli with default settings:
 
 ```js
-// TODO
+grunt.initConfig({
+	'zopfli': {
+		'compress-plugins': {
+			'files': {
+				'dist/plugins.min.js.gz': 'dist/plugins.min.js'
+			}
+		}
+	}
+});
+```
+
+Here’s a slightly more advanced example:
+
+```js
+grunt.initConfig({
+	'zopfli': {
+		'compress-plugins': {
+			'options': {
+				'report': false, // don’t show original and compressed size (default: `true`)
+				'iterations': 50, // min value: 1; (undocumented) max value: 99999999999 (default: `15`)
+				'format': 'zlib', // 'gzip', 'zlib', 'deflate' (default: `gzip`)
+				'splitLast': true // perform block splitting first instead of last (default: `false`)
+			},
+			'files': {
+				'dist/plugins.min.js.gz': 'dist/plugins.min.js'
+			}
+		}
+	}
+});
 ```
 
 ## Author
