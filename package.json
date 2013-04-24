@@ -31,7 +31,6 @@
 		"test": "grunt test"
 	},
 	"dependencies": {
-		"grunt-lib-contrib": "~0.6.1",
 		"shellwords": "~0.1.0"
 	},
 	"devDependencies": {
