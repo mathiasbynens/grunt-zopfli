@@ -4,7 +4,7 @@ A Grunt plugin for compressing files using [Zopfli](https://code.google.com/p/zo
 
 ## Getting started
 
-This plugin requires Grunt v0.4.0+.
+This plugin requires Grunt v0.4.0+. Also, Zopfli must be installed correctly (i.e. the `zopfli` binary must be in your `$PATH`).
 
 If you haven’t used [Grunt](http://gruntjs.com/) before, be sure to check out the [Getting Started](http://gruntjs.com/getting-started) guide, as it explains how to create a [Gruntfile](http://gruntjs.com/sample-gruntfile) as well as install and use Grunt plugins. Once you’re familiar with that process, you may install this plugin with this command:
 
