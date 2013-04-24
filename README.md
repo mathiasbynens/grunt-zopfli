@@ -6,6 +6,25 @@ A Grunt plugin for compressing files using [Zopfli](https://code.google.com/p/zo
 
 This plugin requires Grunt v0.4.0+. Also, Zopfli must be installed correctly (i.e. the `zopfli` binary must be in your `$PATH`).
 
+### Zopfli
+
+To install Zopfli, get its source code, compile the `zopfli` binary, and move it to any directory in our `$PATH`.  Assuming `/usr/local/bin` is in your `$PATH`, you can just follow these steps:
+
+```bash
+cd /tmp
+git clone https://code.google.com/p/zopfli/
+cd zopfli
+make && cp zopfli /usr/local/bin
+```
+
+Here’s a oneliner that can safely be copy-pasted:
+
+```bash
+git clone https://code.google.com/p/zopfli/ /tmp/zopfli && cd $_ && make && cp zopfli /usr/local/bin
+```
+
+### Grunt
+
 If you haven’t used [Grunt](http://gruntjs.com/) before, be sure to check out the [Getting Started](http://gruntjs.com/getting-started) guide, as it explains how to create a [Gruntfile](http://gruntjs.com/sample-gruntfile) as well as install and use Grunt plugins. Once you’re familiar with that process, you may install this plugin with this command:
 
 ```bash
