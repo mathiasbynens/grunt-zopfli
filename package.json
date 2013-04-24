@@ -1,6 +1,6 @@
 {
 	"name": "grunt-zopfli",
-	"version": "0.2.0",
+	"version": "0.2.1",
 	"description": "A Grunt plugin for compressing files using Zopfli",
 	"author": {
 		"name": "Mathias Bynens",
