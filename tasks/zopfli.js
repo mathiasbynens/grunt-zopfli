@@ -1,25 +1,25 @@
-var exec = require('child_process').exec;
+var execFile = require('child_process').execFile;
 var shellEscape = require('shellwords').escape;
 var statSync = require('fs').statSync;
 
 module.exports = function(grunt) {
 
 	var zopfli = function(filePath, options, callback) {
-		var command = [
-			'zopfli',
+
+		var args = [
 			'-c',
 			'--i' + options.iterations,
 			options.format == 'gzip' ? '--gzip'
 				: options.format == 'deflate' ? '--deflate'
 					: '--zlib',
-			options.splitLast ? '--splitlast' : '',
-			shellEscape(filePath)
-		].join(' ');
-		exec(command, function(error, stdout, stderr) {
-			if (error) {
-				grunt.log.warn(error);
-				return;
-			}
+			filePath
+		];
+
+		if (options.splitLast) {
+			args.unshift('--splitlast');
+		};
+
+		execFile('zopfli', args, function(error, stdout, stderr) {
 			callback.call(this, error || stderr, stdout);
 		});
 	};
@@ -59,6 +59,7 @@ module.exports = function(grunt) {
 			// Compress the file
 			zopfli(srcPath, options, function(error, stdout) {
 				if (error) {
+					grunt.log.warn(error);
 					done(false);
 				}
 				// Write the destination file
