@@ -14,13 +14,15 @@ To install Zopfli, get its source code, compile the `zopfli` binary, and move it
 cd /tmp
 git clone https://code.google.com/p/zopfli/
 cd zopfli
-make && cp zopfli /usr/local/bin
+make
+chmod +x zopfli
+cp zopfli /usr/local/bin
 ```
 
-Here’s a oneliner that can safely be copy-pasted:
+Here’s an equivalent oneliner that can safely be copy-pasted:
 
 ```bash
-git clone https://code.google.com/p/zopfli/ /tmp/zopfli && cd $_ && make && cp zopfli /usr/local/bin
+git clone https://code.google.com/p/zopfli/ /tmp/zopfli && cd $_ && make && chmod +x zopfli && cp zopfli /usr/local/bin
 ```
 
 ### Grunt
