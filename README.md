@@ -1,4 +1,4 @@
-# grunt-zopfli
+# grunt-zopfli [![Dependency status](https://gemnasium.com/mathiasbynens/grunt-zopfli.png)](https://gemnasium.com/mathiasbynens/grunt-zopfli)
 
 A Grunt plugin for compressing files using [Zopfli](https://code.google.com/p/zopfli/).
 
