@@ -22,7 +22,7 @@ cp zopfli /usr/local/bin
 Here’s an equivalent oneliner that can safely be copy-pasted:
 
 ```bash
-git clone https://code.google.com/p/zopfli/ /tmp/zopfli && cd $_ && make && chmod +x zopfli && cp zopfli /usr/local/bin
+git clone https://code.google.com/p/zopfli/ $(mktemp -d "/tmp/XXXXX") && cd $_ && make && chmod +x zopfli && cp zopfli /usr/local/bin
 ```
 
 ### Grunt
