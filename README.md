@@ -8,7 +8,7 @@ This plugin requires Grunt v0.4.0+. Also, Zopfli must be installed correctly (i.
 
 ### Zopfli
 
-Installing Zopfli is easy with [Homebrew](http://mxcl.github.io/homebrew/) — just run the following command:
+Installing Zopfli is easy with [Homebrew](http://brew.sh/) — just run the following command:
 
 ```bash
 brew update; brew install zopfli
@@ -122,8 +122,8 @@ grunt.initConfig({
 		'compress-plugins': {
 			'options': {
 				'report': false, // don’t show original and compressed size (default: `true`)
-				'iterations': 50, // min value: 1; (undocumented) max value: 99999999999 (default: `15`)
-				'format': 'zlib', // 'gzip', 'zlib', 'deflate' (default: `gzip`)
+				'iterations': 50, // min value: `1`; (undocumented) max value: `99999999999` (default: `15`)
+				'format': 'zlib', // `'gzip'`, `'zlib'`, `'deflate'` (default: `'gzip'`)
 				'splitLast': true // perform block splitting first instead of last (default: `false`)
 			},
 			'files': {
