@@ -46,34 +46,33 @@ module.exports = function(grunt) {
 		}
 
 		// Iterate over all specified file groups
-		this.files.forEach(function(file) {
-			var srcPath = file.src[0];
-			var destPath = file.dest;
-
-			// Warn on invalid source files
-			if (!grunt.file.exists(srcPath)) {
-				grunt.log.warn('Source file `' + srcPath + '` not found.');
-			}
-
-			// Compress the file
-			zopfli(srcPath, options, function(error, stdout) {
-				if (error) {
-					grunt.log.warn(error);
-					done(false);
+		grunt.util.async.forEach(this.files, function(files, nextSet) {
+			var destPath = files.dest;
+			grunt.util.async.forEach(files.src, function(srcPath, nextFile) {
+				// Warn on invalid source files
+				if (!grunt.file.exists(srcPath)) {
+					grunt.log.warn('Source file `' + srcPath + '` not found.');
 				}
-				// Write the destination file
-				grunt.file.write(destPath, stdout);
-				// Print a success message
-				grunt.log.writeln('File `' + destPath + '` created.');
-				// Print file size info
-				if (options.report) {
-					grunt.log.writeln('Original:   ' + String(statSync(srcPath).size).green + ' bytes.');
-					grunt.log.writeln('Compressed: ' + String(stdout.length).green + ' bytes.');
-				}
-				done();
-			});
 
-		});
+				// Compress the file
+				zopfli(srcPath, options, function(error, stdout) {
+					if (error) {
+						grunt.log.warn(error);
+						return nextFile(false);
+					}
+					// Write the destination file
+					grunt.file.write(destPath, stdout);
+					// Print a success message
+					grunt.log.writeln('File `' + destPath + '` created.');
+					// Print file size info
+					if (options.report) {
+						grunt.log.writeln('Original:   ' + String(statSync(srcPath).size).green + ' bytes.');
+						grunt.log.writeln('Compressed: ' + String(stdout.length).green + ' bytes.');
+					}
+					nextFile();
+				});
+			}, nextSet);
+		}, done);
 	});
 
 };
