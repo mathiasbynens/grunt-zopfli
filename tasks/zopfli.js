@@ -1,5 +1,4 @@
 var execFile = require('child_process').execFile;
-var shellEscape = require('shellwords').escape;
 var statSync = require('fs').statSync;
 
 module.exports = function(grunt) {
