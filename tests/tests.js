@@ -20,11 +20,13 @@ var grunt = require('grunt');
 		test.ifError(value)
 */
 
-var compare = function(inputFile, expectedOutputFile, description, test) {
+var compare = function(inputFile, expectedOutputFile, description, test, moreToCome) {
 	var actual = grunt.file.read(inputFile);
 	var expected = grunt.file.read(expectedOutputFile);
 	test.equal(actual, expected, description);
-	test.done();
+	if (!moreToCome) {
+		test.done();
+	}
 };
 
 exports.zopfli = {
@@ -57,6 +59,36 @@ exports.zopfli = {
 			'tmp/test-4.js.deflate',
 			'tests/expected/test-4.js.deflate',
 			'Benchmark.js, 10 iterations, deflate format, perform block splitting first',
+			test
+		);
+	},
+	'test-5': function(test) {
+		compare(
+			'tmp/test-5-a.js.gz',
+			'tests/expected/test-5-a.js.gz',
+			'Benchmark.js, 10 iterations, first of two files',
+			test,
+			true
+		);
+		compare(
+			'tmp/test-5-b.js.gz',
+			'tests/expected/test-5-b.js.gz',
+			'jQuery, 10 iterations, second of two files',
+			test
+		);
+	},
+	'test-6': function(test) {
+		compare(
+			'tmp/test-6/tests/fixtures/benchmark.js.gz',
+			'tests/expected/test-6-a.js.gz',
+			'Benchmark.js, 5 iterations, using dynamic file path expansion',
+			test,
+			true
+		);
+		compare(
+			'tmp/test-6/tests/fixtures/jquery.js.gz',
+			'tests/expected/test-6-b.js.gz',
+			'jQuery, 5 iterations, using dynamic file path expansion',
 			test
 		);
 	}

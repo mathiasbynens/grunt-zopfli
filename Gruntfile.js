@@ -44,6 +44,24 @@ module.exports = function(grunt) {
 				'files': {
 					'tmp/test-4.js.deflate': 'tests/fixtures/benchmark.js'
 				}
+			},
+			'test-5': {
+				'options': {
+					'iterations': 10 // min value: 1; (undocumented) max value: 99999999999
+				},
+				'files': {
+					'tmp/test-5-a.js.gz': 'tests/fixtures/benchmark.js',
+					'tmp/test-5-b.js.gz': 'tests/fixtures/jquery.min.js'
+				}
+			},
+			'test-6': {
+				'options': {
+					'iterations': 5, // min value: 1; (undocumented) max value: 99999999999
+				},
+				'src': ['tests/fixtures/*'],
+				'dest': 'tmp/test-6/',
+				'expand': true,
+				'ext': '.js.gz'
 			}
 		},
 
