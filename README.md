@@ -69,6 +69,8 @@ grunt.initConfig({
 });
 ```
 
+**Note:** Grunt offers [several ways](http://gruntjs.com/configuring-tasks#files) to define `src` → `dest` (source → destination) file mappings. This plugin supports all of them.
+
 ### Options
 
 The `options` property can be used to override the following settings:
@@ -128,6 +130,26 @@ grunt.initConfig({
 			},
 			'files': {
 				'dist/plugins.min.js.gz': 'dist/plugins.min.js'
+			}
+		}
+	}
+});
+```
+
+Or, to compress all files in `input-directory`, and save the compressed files to `output-directory`, using [Grunt’s dynamic path expansion](http://gruntjs.com/configuring-tasks#files):
+
+```js
+grunt.initConfig({
+	'zopfli': {
+		'compress': {
+			'options': {
+				'iterations': 20 // min value: `1`; (undocumented) max value: `99999999999` (default: `15`)
+			},
+			'files': {
+				'src': ['input-directory/*'],
+				'dest': 'output-directory/',
+				'expand': true,
+				'ext': '.js.gz'
 			}
 		}
 	}
