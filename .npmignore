@@ -1,6 +1,5 @@
 .*
 *.md
-node_modules
 tests
 tmp
 Gruntfile.js
