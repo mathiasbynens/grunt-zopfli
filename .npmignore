@@ -1,0 +1,7 @@
+.*
+*.md
+node_modules
+tests
+tmp
+Gruntfile.js
+npm-debug.log
