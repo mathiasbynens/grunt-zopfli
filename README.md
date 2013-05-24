@@ -1,4 +1,4 @@
-# grunt-zopfli [![Dependency status](https://gemnasium.com/mathiasbynens/grunt-zopfli.png)](https://gemnasium.com/mathiasbynens/grunt-zopfli)
+# grunt-zopfli [![Build status](https://travis-ci.org/mathiasbynens/grunt-zopfli.png?branch=master)](https://travis-ci.org/mathiasbynens/grunt-zopfli) [![Dependency status](https://gemnasium.com/mathiasbynens/grunt-zopfli.png)](https://gemnasium.com/mathiasbynens/grunt-zopfli)
 
 A Grunt plugin for compressing files using [Zopfli](https://code.google.com/p/zopfli/).
 
@@ -14,12 +14,13 @@ Installing Zopfli is easy with [Homebrew](http://brew.sh/) — just run the foll
 brew update; brew install zopfli
 ```
 
-If you’re not using Homebrew, get Zopfli’s source code, compile the `zopfli` binary, and move it to any directory in our `$PATH`.  Assuming `/usr/local/bin` is in your `$PATH`, you can just follow these steps:
+If you’re not using Homebrew, get Zopfli’s source code, compile the `zopfli` binary, and move it to any directory in our `$PATH`. Assuming `/usr/local/bin` is in your `$PATH`, you can just follow these steps:
 
 ```bash
 cd /tmp
-git clone https://code.google.com/p/zopfli/
-cd zopfli
+curl -O https://zopfli.googlecode.com/files/zopfli-1.0.0.zip
+unzip zopfli-1.0.0.zip
+cd zopfli-1.0.0
 make
 chmod +x zopfli
 cp zopfli /usr/local/bin
@@ -28,7 +29,7 @@ cp zopfli /usr/local/bin
 Here’s an equivalent oneliner that can safely be copy-pasted:
 
 ```bash
-git clone https://code.google.com/p/zopfli/ $(mktemp -d "/tmp/XXXXX") && cd $_ && make && chmod +x zopfli && cp zopfli /usr/local/bin
+cd /tmp; curl -O "https://zopfli.googlecode.com/files/zopfli-1.0.0.zip"; unzip zopfli-1.0.0.zip; cd zopfli-1.0.0; make; chmod +x zopfli; cp zopfli /usr/local/bin
 ```
 
 ### Grunt

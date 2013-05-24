@@ -2,3 +2,6 @@ language: node_js
 node_js:
   - "0.10"
   - "0.8"
+before_script:
+  - "curl -O \"https://zopfli.googlecode.com/files/zopfli-1.0.0.zip\"; unzip zopfli-1.0.0.zip; cd zopfli-1.0.0; make; chmod +x zopfli; export PATH=\"$(pwd):${PATH}\"; cd .."
+  - "npm install -g grunt-cli"
