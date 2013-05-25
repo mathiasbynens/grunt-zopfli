@@ -1,4 +1,4 @@
-# grunt-zopfli [![Build status](https://travis-ci.org/mathiasbynens/grunt-zopfli.png?branch=master)](https://travis-ci.org/mathiasbynens/grunt-zopfli) [![Dependency status](https://gemnasium.com/mathiasbynens/grunt-zopfli.png)](https://gemnasium.com/mathiasbynens/grunt-zopfli)
+# grunt-zopfli [![Dependency status](https://gemnasium.com/mathiasbynens/grunt-zopfli.png)](https://gemnasium.com/mathiasbynens/grunt-zopfli)
 
 A Grunt plugin for compressing files using [Zopfli](https://code.google.com/p/zopfli/).
 
