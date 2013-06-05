@@ -20,9 +20,18 @@ var grunt = require('grunt');
 		test.ifError(value)
 */
 
+var crypto = require('crypto');
+var fs = require('fs');
+
+function md5(fileName, callback) {
+	return crypto.createHash('md5').update(
+		fs.readFileSync(fileName)
+	).digest('hex');
+}
+
 var compare = function(inputFile, expectedOutputFile, description, test, moreToCome) {
-	var actual = grunt.file.read(inputFile);
-	var expected = grunt.file.read(expectedOutputFile);
+	var actual = md5(inputFile);
+	var expected = md5(expectedOutputFile);
 	test.equal(actual, expected, description);
 	if (!moreToCome) {
 		test.done();

@@ -30,7 +30,9 @@
 	"scripts": {
 		"test": "grunt test"
 	},
-	"dependencies": {},
+	"dependencies": {
+		"shellwords": "~0.1.0"
+	},
 	"devDependencies": {
 		"grunt-contrib-clean": "~0.4.1",
 		"grunt-contrib-nodeunit": "~0.1.2",

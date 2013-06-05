@@ -1,9 +1,10 @@
-var execFile = require('child_process').execFile;
+var exec = require('child_process').exec;
 var statSync = require('fs').statSync;
+var shellEscape = require('shellwords').escape;
 
 module.exports = function(grunt) {
 
-	var zopfli = function(filePath, options, callback) {
+	var zopfli = function(filePath, destPath, options, callback) {
 
 		var args = [
 			'-c',
@@ -11,14 +12,15 @@ module.exports = function(grunt) {
 			options.format == 'gzip' ? '--gzip'
 				: options.format == 'deflate' ? '--deflate'
 					: '--zlib',
-			filePath
+			shellEscape(filePath)
 		];
 
 		if (options.splitLast) {
 			args.unshift('--splitlast');
 		};
 
-		execFile('zopfli', args, function(error, stdout, stderr) {
+		var command = 'zopfli ' + args.join(' ') + ' > ' + shellEscape(destPath);
+		exec(command, function(error, stdout, stderr) {
 			callback.call(this, error || stderr, stdout);
 		});
 	};
@@ -55,20 +57,21 @@ module.exports = function(grunt) {
 					grunt.log.warn('Source file `' + srcPath + '` not found.');
 				}
 
+				// Quick hack to create the destination path if it doesn’t exist
+				grunt.file.write(destPath, '');
+
 				// Compress the file
-				zopfli(srcPath, options, function(error, stdout) {
+				zopfli(srcPath, destPath, options, function(error, stdout) {
 					if (error) {
 						grunt.log.warn(error);
 						nextFile();
 					}
-					// Write the destination file
-					grunt.file.write(destPath, stdout);
 					// Print a success message
 					grunt.log.writeln('File `' + destPath + '` created.');
 					// Print file size info
 					if (options.report) {
 						grunt.log.writeln('Original:   ' + String(statSync(srcPath).size).green + ' bytes.');
-						grunt.log.writeln('Compressed: ' + String(stdout.length).green + ' bytes.');
+						grunt.log.writeln('Compressed: ' + String(statSync(destPath).size).green + ' bytes.');
 					}
 					nextFile();
 				});
