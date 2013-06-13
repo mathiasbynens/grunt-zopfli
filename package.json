@@ -4,7 +4,7 @@
 	"description": "A Grunt plugin for compressing files using Zopfli",
 	"author": {
 		"name": "Mathias Bynens",
-		"web": "http://mathiasbynens.be/"
+		"url": "http://mathiasbynens.be/"
 	},
 	"homepage": "http://git.io/grunt-zopfli",
 	"licenses": [
