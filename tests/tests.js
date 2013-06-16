@@ -7,14 +7,9 @@ var getFunctionName = function(compressionType) {
 		case 'gzip':
 			return 'createGunzip';
 		case 'deflate':
-			// TODO: Find out why this doesn’t seem to work for Zopfli-generated files
-			// with the `deflate` setting.
-			return 'createInflate';
-		case 'zlib':
-			// TODO: no idea how to decompress Zopfli’s `zlib`-compressed stuff :(
-			// I thought `createInflateRaw` (inflate data without zlib header)
-			// would work.
 			return 'createInflateRaw';
+		case 'zlib':
+			return 'createInflate';
 	}
 };
 
@@ -42,42 +37,39 @@ exports.zopfli = {
 			test.done();
 		});
 	},
-	// // Test disabled because I have no idea how to decompress Zopfli-generated
-	// // with the `zlib` setting. I thought `createInflateRaw` (inflate data
-	// // without zlib header) would work.
-	// 'test-2': function(test) {
-	// 	test.expect(1);
-	// 	decompress('tmp/test-2.js.zlib', 'zlib', function(actual) {
-	// 		test.equal(
-	// 			grunt.file.read('tests/fixtures/benchmark.js'),
-	// 			actual,
-	// 			'Benchmark.js, 50 iterations, zlib format'
-	// 		);
-	// 		test.done();
-	// 	});
-	// },
-	// 'test-3': function(test) {
-	// 	test.expect(1);
-	// 	decompress('tmp/test-3.js.deflate', 'deflate', function(actual) {
-	// 		test.equal(
-	// 			grunt.file.read('tests/fixtures/benchmark.js'),
-	// 			actual,
-	// 			'Benchmark.js, 10 iterations, deflate format, perform block splitting last'
-	// 		);
-	// 		test.done();
-	// 	});
-	// },
-	// 'test-4': function(test) {
-	// 	test.expect(1);
-	// 	decompress('tmp/test-4.js.deflate', 'deflate', function(actual) {
-	// 		test.equal(
-	// 			grunt.file.read('tests/fixtures/benchmark.js'),
-	// 			actual,
-	// 			'Benchmark.js, 10 iterations, deflate format, perform block splitting first'
-	// 		);
-	// 		test.done();
-	// 	});
-	// },
+	'test-2': function(test) {
+		test.expect(1);
+		decompress('tmp/test-2.js.zlib', 'zlib', function(actual) {
+			test.equal(
+				grunt.file.read('tests/fixtures/benchmark.js'),
+				actual,
+				'Benchmark.js, 50 iterations, zlib format'
+			);
+			test.done();
+		});
+	},
+	'test-3': function(test) {
+		test.expect(1);
+		decompress('tmp/test-3.js.deflate', 'deflate', function(actual) {
+			test.equal(
+				grunt.file.read('tests/fixtures/benchmark.js'),
+				actual,
+				'Benchmark.js, 10 iterations, deflate format, perform block splitting last'
+			);
+			test.done();
+		});
+	},
+	'test-4': function(test) {
+		test.expect(1);
+		decompress('tmp/test-4.js.deflate', 'deflate', function(actual) {
+			test.equal(
+				grunt.file.read('tests/fixtures/benchmark.js'),
+				actual,
+				'Benchmark.js, 10 iterations, deflate format, perform block splitting first'
+			);
+			test.done();
+		});
+	},
 	'test-5-a': function(test) {
 		test.expect(1);
 		decompress('tmp/test-5-a.js.gz', 'gzip', function(actual) {
