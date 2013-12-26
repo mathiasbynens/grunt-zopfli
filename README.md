@@ -4,7 +4,7 @@ A Grunt plugin for compressing files using [Zopfli](https://code.google.com/p/zo
 
 ## Getting started
 
-This plugin requires Grunt v0.4.0+. Also, Zopfli must be installed correctly (i.e. the `zopfli` binary must be in your `$PATH`).
+This plugin requires Grunt v0.4.0+. Also, Zopfli must be installed.
 
 ### Zopfli
 
@@ -64,6 +64,9 @@ grunt.initConfig({
 			},
 			'files': {
 				// Target-specific file lists go here
+			},
+			'path': {
+				// optional full path to zopfli bin, defaults to zopfli in $PATH
 			}
 		}
 	}
