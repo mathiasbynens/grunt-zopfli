@@ -14,12 +14,13 @@ module.exports = function(grunt) {
 					: '--zlib',
 			shellEscape(filePath)
 		];
+		var bin = options.path || 'zopfli';
 
 		if (options.splitLast) {
 			args.unshift('--splitlast');
 		};
 
-		var command = 'zopfli ' + args.join(' ') + ' > ' + shellEscape(destPath);
+		var command = bin + ' ' + args.join(' ') + ' > ' + shellEscape(destPath);
 		exec(command, function(error, stdout, stderr) {
 			callback.call(this, error || stderr, stdout);
 		});
