@@ -1,6 +1,6 @@
 {
 	"name": "grunt-zopfli",
-	"version": "0.3.1",
+	"version": "0.3.2",
 	"description": "A Grunt plugin for compressing files using Zopfli",
 	"author": {
 		"name": "Mathias Bynens",
@@ -35,7 +35,7 @@
 	},
 	"devDependencies": {
 		"grunt": "~0.4.1",
-		"grunt-contrib-clean": "~0.4.1",
+		"grunt-contrib-clean": "~0.5.0",
 		"grunt-contrib-nodeunit": "~0.2.0"
 	},
 	"peerDependencies": {
