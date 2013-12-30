@@ -24,7 +24,7 @@ brew update; brew install zopfli
 
 #### Source
 
-Zopfli’s source code, compile the `zopfli` binary, and move it to any directory in our `$PATH`. Assuming `/usr/local/bin` is in your `$PATH`, you can just follow these steps:
+Compile the `zopfli` binary, then move it to any directory in our `$PATH`. Assuming `/usr/local/bin` is in your `$PATH`, you can just follow these steps:
 
 ```bash
 cd /tmp
