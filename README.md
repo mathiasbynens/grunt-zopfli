@@ -8,7 +8,7 @@ This plugin requires Grunt v0.4.0+. Also, Zopfli must be installed.
 
 ### Zopfli
 
-First, you need a binarey for your OS.
+First, you need a binary for your OS.
 
 #### OS X
 
