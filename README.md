@@ -8,13 +8,23 @@ This plugin requires Grunt v0.4.0+. Also, Zopfli must be installed.
 
 ### Zopfli
 
+First, you need a binary for your OS.
+
+#### OS X
+
 Installing Zopfli is easy with [Homebrew](http://brew.sh/) — just run the following command:
 
 ```bash
 brew update; brew install zopfli
 ```
 
-If you’re not using Homebrew, get Zopfli’s source code, compile the `zopfli` binary, and move it to any directory in our `$PATH`. Assuming `/usr/local/bin` is in your `$PATH`, you can just follow these steps:
+#### Windows
+
+[http://ckon.wordpress.com/2013/03/02/zopfli-gzip-compressor-on-windows/](http://ckon.wordpress.com/2013/03/02/zopfli-gzip-compressor-on-windows/) (note the posting date)
+
+#### Source
+
+Compile the `zopfli` binary, then move it to any directory in our `$PATH`. Assuming `/usr/local/bin` is in your `$PATH`, you can just follow these steps:
 
 ```bash
 cd /tmp
