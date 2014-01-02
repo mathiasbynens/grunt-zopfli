@@ -8,13 +8,19 @@ This plugin requires Grunt v0.4.0+. Also, Zopfli must be installed.
 
 ### Zopfli
 
+First, you need a binary for your OS.
+
+#### OS X
+
 Installing Zopfli is easy with [Homebrew](http://brew.sh/) — just run the following command:
 
 ```bash
 brew update; brew install zopfli
 ```
 
-If you’re not using Homebrew, get Zopfli’s source code, compile the `zopfli` binary, and move it to any directory in our `$PATH`. Assuming `/usr/local/bin` is in your `$PATH`, you can just follow these steps:
+#### Source
+
+Compile the `zopfli` binary, then move it to any directory in our `$PATH`. Assuming `/usr/local/bin` is in your `$PATH`, you can just follow these steps:
 
 ```bash
 cd /tmp
