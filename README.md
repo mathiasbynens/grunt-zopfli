@@ -18,10 +18,6 @@ Installing Zopfli is easy with [Homebrew](http://brew.sh/) — just run the foll
 brew update; brew install zopfli
 ```
 
-#### Windows
-
-[http://ckon.wordpress.com/2013/03/02/zopfli-gzip-compressor-on-windows/](http://ckon.wordpress.com/2013/03/02/zopfli-gzip-compressor-on-windows/) (note the posting date)
-
 #### Source
 
 Compile the `zopfli` binary, then move it to any directory in our `$PATH`. Assuming `/usr/local/bin` is in your `$PATH`, you can just follow these steps:
