@@ -60,20 +60,20 @@ In your project’s Gruntfile, add a section named `zopfli` to the data object p
 
 ```js
 grunt.initConfig({
-	'zopfli': {
-		'options': {
-			// Task-specific options go here
-		},
-		'your-target': {
-			'options': {
-				// Target-specific options go here
-			},
-			'files': {
-				// Target-specific file lists go here
-			},
-			'path': '' // Optional full path to `zopfli` binary; defaults to `zopfli` in `$PATH`
-		}
-	}
+  'zopfli': {
+    'options': {
+      // Task-specific options go here
+    },
+    'your-target': {
+      'options': {
+        // Target-specific options go here
+      },
+      'files': {
+        // Target-specific file lists go here
+      },
+      'path': '' // Optional full path to `zopfli` binary; defaults to `zopfli` in `$PATH`
+    }
+  }
 });
 ```
 
@@ -114,13 +114,13 @@ Here’s a practical example of grunt-zopfli with default settings:
 
 ```js
 grunt.initConfig({
-	'zopfli': {
-		'compress-plugins': {
-			'files': {
-				'dist/plugins.min.js.gz': 'dist/plugins.min.js'
-			}
-		}
-	}
+  'zopfli': {
+    'compress-plugins': {
+      'files': {
+        'dist/plugins.min.js.gz': 'dist/plugins.min.js'
+      }
+    }
+  }
 });
 ```
 
@@ -128,19 +128,19 @@ Here’s a slightly more advanced example:
 
 ```js
 grunt.initConfig({
-	'zopfli': {
-		'compress-plugins': {
-			'options': {
-				'report': false, // don’t show original and compressed size (default: `true`)
-				'iterations': 50, // min value: `1`; (undocumented) max value: `99999999999` (default: `15`)
-				'format': 'zlib', // `'gzip'`, `'zlib'`, `'deflate'` (default: `'gzip'`)
-				'splitLast': true // perform block splitting first instead of last (default: `false`)
-			},
-			'files': {
-				'dist/plugins.min.js.gz': 'dist/plugins.min.js'
-			}
-		}
-	}
+  'zopfli': {
+    'compress-plugins': {
+      'options': {
+        'report': false, // don’t show original and compressed size (default: `true`)
+        'iterations': 50, // min value: `1`; (undocumented) max value: `99999999999` (default: `15`)
+        'format': 'zlib', // `'gzip'`, `'zlib'`, `'deflate'` (default: `'gzip'`)
+        'splitLast': true // perform block splitting first instead of last (default: `false`)
+      },
+      'files': {
+        'dist/plugins.min.js.gz': 'dist/plugins.min.js'
+      }
+    }
+  }
 });
 ```
 
@@ -148,19 +148,19 @@ Or, to compress all files in `input-directory`, and save the compressed files to
 
 ```js
 grunt.initConfig({
-	'zopfli': {
-		'compress': {
-			'options': {
-				'iterations': 20 // min value: `1`; (undocumented) max value: `99999999999` (default: `15`)
-			},
-			'files': {
-				'src': ['input-directory/*'],
-				'dest': 'output-directory/',
-				'expand': true,
-				'ext': '.js.gz'
-			}
-		}
-	}
+  'zopfli': {
+    'compress': {
+      'options': {
+        'iterations': 20 // min value: `1`; (undocumented) max value: `99999999999` (default: `15`)
+      },
+      'files': {
+        'src': ['input-directory/*'],
+        'dest': 'output-directory/',
+        'expand': true,
+        'ext': '.js.gz'
+      }
+    }
+  }
 });
 ```
 
