@@ -1,6 +1,7 @@
 var exec = require('child_process').exec;
 var statSync = require('fs').statSync;
 var shellEscape = require('shellwords').escape;
+var async = require('async');
 
 module.exports = function(grunt) {
 
@@ -49,9 +50,9 @@ module.exports = function(grunt) {
 		}
 
 		// Iterate over all specified file groups
-		grunt.util.async.forEachSeries(this.files, function(filePair, nextPair) {
+		async.eachSeries(this.files, function(filePair, nextPair) {
 			var destPath = filePair.dest;
-			grunt.util.async.forEachSeries(filePair.src, function(srcPath, nextFile) {
+			async.eachSeries(filePair.src, function(srcPath, nextFile) {
 
 				// Warn on invalid source files
 				if (!grunt.file.exists(srcPath)) {
