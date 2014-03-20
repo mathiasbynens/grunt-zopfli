@@ -1,4 +1,4 @@
-# grunt-zopfli [![Build status](https://travis-ci.org/mathiasbynens/grunt-zopfli.png?branch=master)](https://travis-ci.org/mathiasbynens/grunt-zopfli) [![Dependency status](https://gemnasium.com/mathiasbynens/grunt-zopfli.png)](https://gemnasium.com/mathiasbynens/grunt-zopfli)
+# grunt-zopfli [![Build status](https://travis-ci.org/mathiasbynens/grunt-zopfli.svg?branch=master)](https://travis-ci.org/mathiasbynens/grunt-zopfli) [![Dependency status](https://gemnasium.com/mathiasbynens/grunt-zopfli.svg)](https://gemnasium.com/mathiasbynens/grunt-zopfli)
 
 A Grunt plugin for compressing files using [Zopfli](https://code.google.com/p/zopfli/).
 
@@ -166,7 +166,7 @@ grunt.initConfig({
 
 ## Author
 
-| [![twitter/mathias](http://gravatar.com/avatar/24e08a9ea84deb17ae121074d0f17125?s=70)](http://twitter.com/mathias "Follow @mathias on Twitter") |
+| [![twitter/mathias](https://gravatar.com/avatar/24e08a9ea84deb17ae121074d0f17125?s=70)](https://twitter.com/mathias "Follow @mathias on Twitter") |
 |---|
 | [Mathias Bynens](http://mathiasbynens.be/) |
 
