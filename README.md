@@ -63,6 +63,7 @@ grunt.initConfig({
   'zopfli': {
     'options': {
       // Task-specific options go here
+      'path': '' // Optional full path to `zopfli` binary; defaults to `zopfli` in `$PATH`
     },
     'your-target': {
       'options': {
@@ -70,8 +71,7 @@ grunt.initConfig({
       },
       'files': {
         // Target-specific file lists go here
-      },
-      'path': '' // Optional full path to `zopfli` binary; defaults to `zopfli` in `$PATH`
+      }
     }
   }
 });
