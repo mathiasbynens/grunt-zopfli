@@ -2,13 +2,19 @@ var exec = require('child_process').exec;
 var statSync = require('fs').statSync;
 var shellEscape = require('shellwords').escape;
 var async = require('async');
+var fsRename = require('fs').rename;
+
+var formatExtensionMap = {
+    gzip: ".gz",
+    deflate: ".deflate",
+    zlib: ".zlib",
+};
 
 module.exports = function(grunt) {
 
 	var zopfli = function(filePath, destPath, options, callback) {
 
 		var args = [
-			'-c',
 			'--i' + options.iterations,
 			options.format == 'gzip' ? '--gzip'
 				: options.format == 'deflate' ? '--deflate'
@@ -21,9 +27,18 @@ module.exports = function(grunt) {
 			args.unshift('--splitlast');
 		};
 
-		var command = bin + ' ' + args.join(' ') + ' > ' + shellEscape(destPath);
-		exec(command, function(error, stdout, stderr) {
-			callback.call(this, error || stderr, stdout);
+		grunt.file.delete(destPath);
+		var tempFilePath = filePath + formatExtensionMap[options.format];
+		var command = bin + ' ' + args.join(' ');
+		exec(command, function (error, stdout, stderr) {
+		    if (error || stderr) {
+		        callback.call(this, error || stderr, stdout);
+		    }
+		    else {
+		        fsRename(tempFilePath, destPath, function (ex) {
+		            callback.call(this, ex, stdout);
+		        });
+		    }
 		});
 	};
 
