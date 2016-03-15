@@ -1,5 +1,5 @@
 var grunt = require('grunt');
-var zlib = require('zlib'); // http://nodejs.org/api/zlib.html#zlib_zlib
+var zlib = require('zlib'); // https://nodejs.org/api/zlib.html#zlib_zlib
 var fs = require('fs');
 
 var getFunctionName = function(compressionType) {

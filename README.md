@@ -168,8 +168,8 @@ grunt.initConfig({
 
 | [![twitter/mathias](https://gravatar.com/avatar/24e08a9ea84deb17ae121074d0f17125?s=70)](https://twitter.com/mathias "Follow @mathias on Twitter") |
 |---|
-| [Mathias Bynens](http://mathiasbynens.be/) |
+| [Mathias Bynens](https://mathiasbynens.be/) |
 
 ## License
 
-grunt-zopfli is dual licensed under the [MIT](http://mths.be/mit) and [GPL](http://mths.be/gpl) licenses.
+grunt-zopfli is dual licensed under the [MIT](https://mths.be/mit) and [GPL](https://mths.be/gpl) licenses.

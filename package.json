@@ -4,29 +4,24 @@
 	"description": "A Grunt plugin for compressing files using Zopfli",
 	"author": {
 		"name": "Mathias Bynens",
-		"url": "http://mathiasbynens.be/"
+		"url": "https://mathiasbynens.be/"
 	},
 	"homepage": "http://git.io/grunt-zopfli",
 	"licenses": [
 		{
 			"type": "MIT",
-			"url": "http://mths.be/mit"
+			"url": "https://mths.be/mit"
 		},
 		{
 			"type": "GPL",
-			"url": "http://mths.be/gpl"
+			"url": "https://mths.be/gpl"
 		}
 	],
 	"repository": {
 		"type": "git",
 		"url": "git://github.com/mathiasbynens/grunt-zopfli.git"
 	},
-	"bugs": {
-		"url": "https://github.com/mathiasbynens/grunt-zopfli/issues"
-	},
-	"directories": {
-		"test": "tests"
-	},
+	"bugs": "https://github.com/mathiasbynens/grunt-zopfli/issues",
 	"scripts": {
 		"test": "grunt test"
 	},
