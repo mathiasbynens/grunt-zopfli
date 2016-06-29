@@ -1,6 +1,6 @@
 # grunt-zopfli [![Build status](https://travis-ci.org/mathiasbynens/grunt-zopfli.svg?branch=master)](https://travis-ci.org/mathiasbynens/grunt-zopfli) [![Dependency status](https://gemnasium.com/mathiasbynens/grunt-zopfli.svg)](https://gemnasium.com/mathiasbynens/grunt-zopfli)
 
-A Grunt plugin for compressing files using [Zopfli](https://code.google.com/p/zopfli/).
+A Grunt plugin for compressing files using [Zopfli](https://github.com/google/zopfli).
 
 ## Getting started
 
@@ -24,9 +24,9 @@ Compile the `zopfli` binary, then move it to any directory in our `$PATH`. Assum
 
 ```bash
 cd /tmp
-curl -O https://zopfli.googlecode.com/files/zopfli-1.0.0.zip
-unzip zopfli-1.0.0.zip
-cd zopfli-1.0.0
+curl -LO 'https://github.com/google/zopfli/archive/zopfli-1.0.1.zip'
+unzip zopfli-1.0.1.zip
+cd zopfli-zopfli-1.0.1
 make
 chmod +x zopfli
 cp zopfli /usr/local/bin
@@ -35,7 +35,7 @@ cp zopfli /usr/local/bin
 Here’s an equivalent oneliner that can safely be copy-pasted:
 
 ```bash
-cd /tmp; curl -O "https://zopfli.googlecode.com/files/zopfli-1.0.0.zip"; unzip zopfli-1.0.0.zip; cd zopfli-1.0.0; make; chmod +x zopfli; cp zopfli /usr/local/bin
+cd /tmp; curl -LO 'https://github.com/google/zopfli/archive/zopfli-1.0.1.zip'; unzip zopfli-1.0.1.zip; cd zopfli-zopfli-1.0.1; make; chmod +x zopfli; cp zopfli /usr/local/bin
 ```
 
 ### Grunt
